@@ -37,5 +37,29 @@ int CliSock::goconnect(int port, std::string addr)
 	std::cout<<"inet_pton result : "<<strerror(errno)<<std::endl;
 	tmpResult = connect(s_fd,(sockaddr *)&s_cli,sizeof(s_cli));
 	std::cout<<"connect result :"<<strerror(errno)<<std::endl;
+	if(tmpResult>0)
+	{
+		is_con=true;
+	}
+}
+
+int CliSock::sendMsg(std::string msg)
+{
+	if(!is_con)
+	{
+		return -1;
+
+	}
+
+	int tmp(0);
+	tmp = write(s_fd,msg.c_str(),msg.size());
 
 }
+
+std::string CliSock::readMsg()
+{
+	char buf[512];
+	int tmp = read(s_fd,buf,512);
+	std::string tmpStr(buf);
+	return tmpStr;
+}	
