@@ -1,7 +1,7 @@
 #include <iostream>
 #include <pthread.h>
 #include <vector>
-
+#include <unistd.h>
 
 std::vector<int> intV;
 pthread_mutex_t mutex;
@@ -31,11 +31,11 @@ void *change(void *arg)
 	for(int c=1;c<400;c++)
 	{
 		pthread_mutex_lock(&mutex);
-		if(c%100==0)
+		if(c%4==0)
 		{
 			intV.push_back(1);
 			pthread_cond_signal(&con);
-
+			sleep(2);
 		}
 		
 		pthread_mutex_unlock(&mutex);
@@ -45,12 +45,11 @@ void *change(void *arg)
 int main()
 {
 	pthread_t tid1,tid2;
-	
 
 	pthread_mutex_init(&mutex,NULL);
 	pthread_cond_init(&con,NULL);
 
-	pthread_create(&tid1,NULL,readtid,NULL);
+	//pthread_create(&tid1,NULL,readtid,NULL);
 	pthread_create(&tid1,NULL,change,NULL);
 
 	pthread_join(tid1,NULL);

@@ -4,10 +4,15 @@
 #include <iostream>
 #include <pthread.h>
 #include <unistd.h>
+#include <EveryThread.h>
 
+#include <boost/noncopyable.hpp>
 namespace myth52125
 {
-class MutexLock
+
+using namespace myth52125;
+
+class MutexLock: boost::noncopyable
 {
   private:
 	pthread_mutex_t			 _mutex;
@@ -15,7 +20,7 @@ class MutexLock
 
 	void assignThread()
 	{
-		_inWhichThread = tid();
+		// _inWhichThread = EveryThread::tid();
 	}
 
 	void unassignThread()
@@ -23,33 +28,42 @@ class MutexLock
 		_inWhichThread = 0;
 	}
 
+
+	
+
   public:
 	MutexLock()
 	{
-		pthread_mutex_init(&_mutex);
+		int resullt = pthread_mutex_init(&_mutex,NULL);
+		
 	}
 
 	~MutexLock()
 	{
-		pthread_mutex_destroy(&_mutex)
+		pthread_mutex_destroy(&_mutex);
 	}
 
 	void lock()
 	{
-		assignThread();
-		pthread_mutex_lock(&_mutex, NULL);
+		// assignThread();
+		pthread_mutex_lock(&_mutex);
 	}
 	void unlock()
 	{
-		unassignThread();
-		pthread_mutex_unlock(&_mutex, NULL);
+		// unassignThread();
+		pthread_mutex_unlock(&_mutex);
 	}
+	void unassignHolder()
+	{
 
+	}
 	pthread_mutex_t *getMutex()
 	{
-		return _mutex;
+		return &_mutex;
 	}
-}
+};
+
+
 
 
 
@@ -68,7 +82,7 @@ public:
 		_mutex.unlock();
 	}
 
-}
+};
 }
 
 #endif
