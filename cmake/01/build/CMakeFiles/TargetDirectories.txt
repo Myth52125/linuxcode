@@ -1,0 +1,6 @@
+/home/myth52125/github/linuxcode/cmake/01/build/CMakeFiles/edit_cache.dir
+/home/myth52125/github/linuxcode/cmake/01/build/CMakeFiles/rebuild_cache.dir
+/home/myth52125/github/linuxcode/cmake/01/build/CMakeFiles/test.dir
+/home/myth52125/github/linuxcode/cmake/01/build/src/A/CMakeFiles/edit_cache.dir
+/home/myth52125/github/linuxcode/cmake/01/build/src/A/CMakeFiles/rebuild_cache.dir
+/home/myth52125/github/linuxcode/cmake/01/build/src/A/CMakeFiles/A.dir
