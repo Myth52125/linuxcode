@@ -2,3 +2,4 @@ rpc/double/client
 ../linuxcode/rpc/double/double_v_clnt.o
 rpc/double/double_v_svc.o
 rpc/double/double_v_xdr.o
+rpc/double/server
