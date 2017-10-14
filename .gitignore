@@ -3,3 +3,6 @@ rpc/double/client
 rpc/double/double_v_svc.o
 rpc/double/double_v_xdr.o
 rpc/double/server
+*.exe
+*.out
+*.o
