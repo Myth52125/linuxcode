@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-extern int global;
+extern int  global;
 int main()
 {
     global++;

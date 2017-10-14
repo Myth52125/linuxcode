@@ -1,4 +1,4 @@
- int global=1;
+ extern int global;
 // extern int b;
 
 
